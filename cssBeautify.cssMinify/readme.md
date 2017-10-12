@@ -15,15 +15,17 @@
 
 可配置是否横向排列 horizontal 默认为 false
 
-     当 horizontal = true:
-	    body {padding-top:20px;padding-bottom:20px}
-    .navbar {margin-bottom:20px}
+	当 horizontal = true:
 	
-     当 horizontal = false:
-	    body {
-			padding-top:20px;
-	    	padding-bottom:20px
-		}
-		.navbar {
-			margin-bottom:20px
-		}
+	body {padding-top:20px;padding-bottom:20px}
+	.navbar {margin-bottom:20px}
+
+	当 horizontal = false:
+	
+	body {
+	    padding-top:20px;
+	    padding-bottom:20px
+	}
+	.navbar {
+	    margin-bottom:20px
+	}
