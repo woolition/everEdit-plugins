@@ -1,0 +1,22 @@
+/* 作者 Woolition 2017-10-12
+ *  来源:http://tool.chinaz.com/Tools/CssFormat.aspx
+ *  是从对应的页面将功能扒下来的,功能不是最好,但是足够简洁
+ *  TODO: 适配 EverEdit , 压缩CSS
+ *  当有选区的时候,只压缩选区的内容,如果没有选区,则压缩整个文档的内容
+ */
+var pack = function(s) { //压缩 CSS 代码
+	s = s.replace(/\/\*(.|\n)*?\*\//g, ""); //删除注释
+	s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+	s = s.replace(/\,[\s\.\#\d]*\{/g, "{"); //容错处理
+	s = s.replace(/;\s*;/g, ";"); //清除连续分号
+	s = s.match(/^\s*(\S+(\s+\S+)*)\s*$/); //去掉首尾空白
+	return (s == null) ? "" : s[1];
+};
+
+var doc = App.ActiveDoc;
+var text = doc.SelText;
+
+if (text.length)
+	doc.SelText = pack(text);
+else
+	doc.Text = pack(doc.Text);

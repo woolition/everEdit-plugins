@@ -1,0 +1,41 @@
+/* 作者 Woolition 2017-10-12
+ *  来源:http://tool.chinaz.com/Tools/CssFormat.aspx
+ *  是从对应的页面将功能扒下来的,功能不是最好,但是足够简洁
+ *  TODO: 适配 EverEdit , 格式化CSS
+ *  当有选区的时候,只格式化选区的内容,如果没有选区,则格式化整个文档的内容
+ *
+ *  horizontal = true:
+ *	    body {padding-top:20px;padding-bottom:20px}
+ *	    .navbar {margin-bottom:20px}
+ *	
+ *  horizontal = false:
+ *	    body {
+ *			padding-top:20px;
+ *	    	padding-bottom:20px
+ *		}
+ *		.navbar {
+ *			margin-bottom:20px
+ *		}
+ */
+var horizontal = false; //是否横向排列
+
+var format = function(s) { //格式化代码
+	s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+	s = s.replace(/;\s*;/g, ";"); //清除连续分号
+	s = s.replace(/\,[\s\.\#\d]*{/g, "{");
+	s = s.replace(/([^\s])\{([^\s])/g, "$1 {\n\t$2");
+	s = s.replace(/([^\s])\}([^\n]*)/g, "$1\n}\n$2");
+	s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2");
+	if (horizontal) {
+		s = s.replace(/(\r|\n|\t)/g, "");
+		s = s.replace(/(})/g, "$1\r\n");
+	}
+	return s;
+};
+var doc = App.ActiveDoc;
+var text = doc.SelText;
+
+if (text.length)
+	doc.SelText = format(text);
+else
+	doc.Text = format(doc.Text);
