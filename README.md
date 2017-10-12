@@ -13,3 +13,12 @@
 实现CSS 代码的压缩与解压缩功能
 在线实现 站长之家:  http://tool.chinaz.com/Tools/CssFormat.aspx
 
+* * *
+## jsonTools
+json相关的工具,目前为止,提供
+
+    JScript不支持 JSON.parse() 和 JSON.stringify(),所以把 json2.js 代码整合进文件里面了.
+    json2.js 源码地址: https://github.com/douglascrockford/JSON-js/blob/master/json2.js
+
+* json 压缩工具
+* json 格式化工具
