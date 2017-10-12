@@ -17,7 +17,7 @@
 
      当 horizontal = true:
 	    body {padding-top:20px;padding-bottom:20px}
-    .navbar {margin-bottom:20px}
+            .navbar {margin-bottom:20px}
 	
      当 horizontal = false:
 	    body {
